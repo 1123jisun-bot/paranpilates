@@ -300,6 +300,90 @@
     go(0);
   }
 
+  /* ---------- 산전·산후 회복 기록 ---------- */
+  const pp = $('.pp');
+  if (pp) {
+    const data = [
+      ['pp01', '1월 29일', 59.8], ['pp02', '1월 30일', 59.8], ['pp03', '1월 31일', 58.7],
+      ['pp04', '2월 1일', 57.7], ['pp05', '2월 2일', 56.8], ['pp06', '2월 3일', 55.7],
+      ['pp07', '2월 4일', 55.3], ['pp08', '2월 5일', 54.5], ['pp09', '2월 7일', 54.2],
+      ['pp10', '2월 9일', 53.4], ['pp11', '2월 11일', 52.4], ['pp12', '2월 12일', 50.3],
+    ];
+    const frame = $('.pp__frame', pp);
+    const dateEl = $('.pp__date', pp);
+    const weightEl = $('.pp__weight', pp);
+    const range = $('.pp__range', pp);
+    const playBtn = $('.pp__play', pp);
+
+    frame.innerHTML = '';
+    const imgs = data.map(([id, date], i) => {
+      const img = document.createElement('img');
+      img.className = 'pp__img' + (i === 0 ? ' is-on' : '');
+      img.src = `img/pp/${id}.webp`;
+      img.alt = `출산 후 ${date} 다리 부기 기록`;
+      img.width = 620; img.height = 620;
+      if (i > 1) img.loading = 'lazy';
+      frame.appendChild(img);
+      return img;
+    });
+    range.max = String(data.length - 1);
+
+    // 몸무게 그래프
+    const svg = $('.pp__chart svg', pp);
+    const line = $('.pp__line', svg);
+    const dots = $('.pp__dots', svg);
+    const xs = data.map((_, i) => 40 + (460 * i) / (data.length - 1));
+    const min = 49.5, max = 60.5;
+    const ys = data.map(([, , w]) => 170 - ((w - min) / (max - min)) * 150);
+    line.setAttribute('points', xs.map((x, i) => `${x.toFixed(1)},${ys[i].toFixed(1)}`).join(' '));
+    dots.innerHTML = '';
+    data.forEach(([, date, w], i) => {
+      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('cx', xs[i].toFixed(1));
+      c.setAttribute('cy', ys[i].toFixed(1));
+      c.setAttribute('r', '4');
+      dots.appendChild(c);
+      if (i === 0 || i === data.length - 1) {
+        const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        t.setAttribute('x', xs[i].toFixed(1));
+        t.setAttribute('y', (ys[i] - 14).toFixed(1));
+        t.setAttribute('text-anchor', i === 0 ? 'start' : 'end');
+        t.textContent = `${w}kg`;
+        dots.appendChild(t);
+      }
+    });
+    const dotEls = [...dots.querySelectorAll('circle')];
+
+    let idx = 0;
+    let timer = null;
+    const show = (n) => {
+      idx = (n + data.length) % data.length;
+      imgs.forEach((img, i) => img.classList.toggle('is-on', i === idx));
+      dotEls.forEach((c, i) => c.classList.toggle('is-now', i === idx));
+      dateEl.textContent = data[idx][1];
+      weightEl.textContent = `${data[idx][2]}kg`;
+      range.value = String(idx);
+    };
+    const stop = () => { clearInterval(timer); timer = null; playBtn.textContent = '▶'; playBtn.setAttribute('aria-label', '재생'); };
+    const play = () => {
+      if (timer || reduceMotion) return;
+      timer = setInterval(() => show(idx + 1), 900);
+      playBtn.textContent = '❚❚';
+      playBtn.setAttribute('aria-label', '일시정지');
+    };
+    playBtn.addEventListener('click', () => (timer ? stop() : play()));
+    range.addEventListener('input', () => { stop(); show(Number(range.value)); });
+    show(0);
+    stop();
+
+    if ('IntersectionObserver' in window) {
+      const ppIO = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => (entry.isIntersecting ? play() : stop()));
+      }, { threshold: 0.35 });
+      ppIO.observe(pp);
+    }
+  }
+
   /* ---------- Copy to clipboard ---------- */
   const toast = $('.toast');
   let toastTimer;
