@@ -1575,3 +1575,15 @@ body.menu-open .mobile-menu__nav a:nth-child(6) { transition-delay: 0.5s; }
 .contact-row__value--sm { font-size: clamp(18px, 2.4vw, 30px); font-weight: 400; }
 
 .reviews__more { margin-top: clamp(40px, 5vw, 56px); display: flex; justify-content: center; }
+
+/* 실제 후기(길이가 긴 텍스트)에 맞춘 조정 */
+.slider { --dur: 11s; }
+.slide blockquote {
+  font-size: clamp(18px, 2.1vw, 27px);
+  line-height: 1.65;
+  letter-spacing: -0.03em;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.slide figcaption b { color: var(--blue); }
