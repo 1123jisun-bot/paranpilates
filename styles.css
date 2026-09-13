@@ -1684,3 +1684,81 @@ body.menu-open .mobile-menu__nav a:nth-child(6) { transition-delay: 0.5s; }
   line-height: 1.25;
 }
 .quote-band__text p em { font-style: normal; color: #8ED8FF; }
+
+/* ---------- 강사진 ---------- */
+
+.instructors { background: var(--sand); }
+.teachers {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(20px, 2.4vw, 32px);
+}
+.teacher {
+  display: flex;
+  flex-direction: column;
+  background: var(--ivory);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
+}
+.teacher:hover { transform: translateY(-6px); box-shadow: 0 26px 50px -30px rgba(0, 60, 122, 0.45); }
+.teacher__photo {
+  aspect-ratio: 4 / 5;
+  background: var(--sand);
+  overflow: hidden;
+}
+.teacher__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;
+  transition: transform 1.2s var(--ease);
+}
+.teacher:hover .teacher__photo img { transform: scale(1.05); }
+.teacher__body { padding: 24px 22px 26px; display: flex; flex-direction: column; flex: 1; }
+.teacher__role {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+.teacher__name {
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  margin-bottom: 16px;
+}
+.teacher__list {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 18px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #4A4743;
+}
+.teacher__list li { position: relative; padding-left: 12px; }
+.teacher__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0.6;
+}
+.teacher .tags { margin-top: auto; justify-content: flex-start; }
+.teacher .tags li { background: var(--blue-soft); border-color: transparent; color: var(--blue); font-size: 12px; }
+
+@media (max-width: 1100px) {
+  .teachers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .teachers { grid-template-columns: 1fr; }
+  .teacher { flex-direction: row; }
+  .teacher__photo { flex: 0 0 40%; aspect-ratio: auto; }
+  .teacher__body { padding: 20px; }
+  .teacher__list { font-size: 13px; }
+}
