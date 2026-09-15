@@ -2149,12 +2149,13 @@ body.menu-open .menu-toggle { border-color: var(--line); }
 
 .about__avatars {
   position: absolute;
-  right: -36px;
+  left: 50%;
+  transform: translateX(-50%);
   bottom: -46px;
   z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   gap: 10px;
 }
 .about__avatar-row { display: flex; }
@@ -2183,6 +2184,12 @@ body.menu-open .menu-toggle { border-color: var(--line); }
 .about__avatar-label b { color: var(--blue); font-weight: 700; }
 
 @media (max-width: 768px) {
-  .about__avatars { right: -20px; bottom: -38px; }
+  .about__avatars { bottom: -38px; }
   .about__avatar-label { font-size: 12px; padding: 7px 13px; }
 }
+
+/* 모바일 메뉴 문구·예약 버튼 */
+.mobile-menu__nav a { font-family: var(--sans); font-size: clamp(24px, 6.4vw, 34px); font-weight: 600; letter-spacing: -0.04em; }
+.mobile-menu__nav a small { font-family: var(--serif); font-size: 14px; font-style: italic; }
+.mobile-menu__cta { width: 100%; margin-top: 28px; }
+.mobile-menu__contact { margin-top: 18px; }
