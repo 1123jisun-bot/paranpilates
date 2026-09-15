@@ -1844,3 +1844,48 @@ body.menu-open .mobile-menu__nav a:nth-child(6) { transition-delay: 0.5s; }
   .pp { grid-template-columns: 1fr; }
   .rep-gallery { grid-template-columns: 1fr; }
 }
+
+/* 리포트 카드의 변화 포인트 */
+.work__points {
+  display: grid;
+  gap: 7px;
+  margin-top: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  line-height: 1.55;
+  color: #4A4743;
+}
+.work__points li { position: relative; padding-left: 13px; }
+.work__points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+.rep-gallery figure { margin: 0; }
+.rep-gallery figcaption { margin-top: 10px; font-size: 13px; line-height: 1.55; color: #4A4743; }
+.rep-gallery figcaption b {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--blue);
+}
+.rep-gallery figcaption ul { display: grid; gap: 4px; }
+.rep-gallery figcaption li { position: relative; padding-left: 11px; }
+.rep-gallery figcaption li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0.7;
+}
