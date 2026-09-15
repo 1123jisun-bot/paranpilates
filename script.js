@@ -177,6 +177,22 @@
     });
   }
 
+  /* ---------- 레슨별 상세 아코디언 ---------- */
+  const planHeads = $$('.plan__head');
+  planHeads.forEach((head) => {
+    const panel = head.nextElementSibling;
+    head.addEventListener('click', () => {
+      const open = head.getAttribute('aria-expanded') === 'true';
+      planHeads.forEach((other) => {
+        if (other === head) return;
+        other.setAttribute('aria-expanded', 'false');
+        other.nextElementSibling.classList.remove('is-open');
+      });
+      head.setAttribute('aria-expanded', String(!open));
+      panel.classList.toggle('is-open', !open);
+    });
+  });
+
   /* ---------- Works filter ---------- */
   const filters = $$('.filter');
   const works = $$('.work');

@@ -1889,3 +1889,154 @@ body.menu-open .mobile-menu__nav a:nth-child(6) { transition-delay: 0.5s; }
   background: var(--blue);
   opacity: 0.7;
 }
+
+
+/* ---------- 레슨별 상세 (클릭해서 펼치기) ---------- */
+
+.plans {
+  margin-top: clamp(32px, 4vw, 48px);
+  border-top: 1px solid var(--line);
+}
+.plan { border-bottom: 1px solid var(--line); }
+.plan__head {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 26px 8px;
+  border: 0;
+  background: none;
+  text-align: left;
+  transition: background-color 0.4s var(--ease);
+}
+.plan__head:hover { background: var(--ivory); }
+.plan__no {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--blue);
+}
+.plan__name {
+  font-size: clamp(19px, 2vw, 25px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+.plan__name em {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--serif);
+  font-size: 16px;
+  color: var(--muted);
+}
+.plan__hint { font-size: 14.5px; color: var(--muted); }
+.plan__icon {
+  position: relative;
+  justify-self: end;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+}
+.plan__icon::before,
+.plan__icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 13px;
+  height: 1.5px;
+  margin: -0.75px 0 0 -6.5px;
+  background: var(--blue);
+  transition: transform 0.5s var(--ease);
+}
+.plan__icon::after { transform: rotate(90deg); }
+.plan__head[aria-expanded="true"] .plan__icon::after { transform: rotate(0deg); }
+.plan__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.6s var(--ease);
+}
+.plan__panel.is-open { grid-template-rows: 1fr; }
+.plan__inner { overflow: hidden; }
+.plan__list {
+  display: grid;
+  gap: 10px;
+  padding: 4px 8px 4px 84px;
+  font-size: 15.5px;
+  color: #4A4743;
+}
+.plan__list li { position: relative; padding-left: 15px; }
+.plan__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0.7;
+}
+.plan__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 22px 8px 30px 84px;
+  padding: 18px 22px;
+  border-radius: 10px;
+  background: var(--blue-soft);
+}
+.plan__tickets { font-size: 15px; color: var(--blue-deep); }
+.plan__tickets b { font-weight: 700; }
+
+@media (max-width: 768px) {
+  .plan__head { grid-template-columns: 48px minmax(0, 1fr) 36px; gap: 12px; padding: 22px 0; }
+  .plan__hint { grid-column: 2 / -1; font-size: 13.5px; }
+  .plan__icon { width: 36px; height: 36px; }
+  .plan__list { padding-left: 60px; }
+  .plan__foot { margin-left: 60px; margin-right: 0; flex-direction: column; align-items: flex-start; }
+  .plan__foot .btn { width: 100%; }
+}
+
+/* ==========================================================
+   사진 무드 톤 — 깊고 어두운 블루 (리포트/기록 사진 제외)
+   ========================================================== */
+
+.hero__arch img,
+.about__portrait img,
+.about__sub img,
+.teacher__photo img,
+.program__thumb,
+.program-float img,
+.film__frame video {
+  filter: saturate(0.85) contrast(1.08) brightness(0.72);
+  transition: filter 1s var(--ease), transform 1.2s var(--ease);
+}
+.quote-band__media img { filter: saturate(0.85) contrast(1.05) brightness(0.85); }
+
+/* 어두운 블루 베일 */
+.hero__arch::before,
+.about__portrait::before,
+.about__sub::before,
+.teacher__photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 48, 96, 0.42), rgba(16, 22, 34, 0.5));
+  transition: opacity 0.8s var(--ease);
+}
+.hero__arch,
+.about__portrait,
+.about__sub,
+.teacher__photo { position: relative; }
+
+/* 마우스를 올리면 살짝 밝아지며 색이 살아남 */
+.teacher:hover .teacher__photo img { filter: saturate(1) contrast(1.02) brightness(0.92); }
+.teacher:hover .teacher__photo::before { opacity: 0.45; }
+.program:hover .program__thumb { filter: saturate(1) contrast(1.02) brightness(0.9); }
+.film__frame:hover video { filter: saturate(1) contrast(1.02) brightness(0.9); }
