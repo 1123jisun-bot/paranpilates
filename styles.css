@@ -1711,7 +1711,7 @@ body.menu-open .mobile-menu__nav a:nth-child(6) { transition-delay: 0.5s; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 22%;
+  object-position: 50% 50%;
   transition: transform 1.2s var(--ease);
 }
 .teacher:hover .teacher__photo img { transform: scale(1.05); }
