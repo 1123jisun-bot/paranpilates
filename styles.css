@@ -2040,3 +2040,149 @@ body.menu-open .mobile-menu__nav a:nth-child(6) { transition-delay: 0.5s; }
 .teacher:hover .teacher__photo::before { opacity: 0.25; }
 .program:hover .program__thumb { filter: saturate(1) contrast(1) brightness(1); }
 .film__frame:hover video { filter: saturate(1) contrast(1) brightness(1); }
+
+/* ==========================================================
+   히어로 — 센터 전경 배경 위 텍스트
+   ========================================================== */
+
+.hero {
+  position: relative;
+  color: var(--ivory);
+  overflow: hidden;
+}
+.hero::before { display: none; }
+.hero__bg { position: absolute; inset: 0; z-index: 0; }
+.hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+  filter: saturate(0.88) contrast(1.05) brightness(0.62);
+  animation: hero-zoom 3s var(--ease) both;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(180deg, rgba(8, 16, 30, 0.58) 0%, rgba(8, 16, 30, 0.34) 45%, rgba(0, 40, 82, 0.62) 100%),
+    linear-gradient(90deg, rgba(8, 16, 30, 0.5) 0%, rgba(8, 16, 30, 0) 60%);
+}
+.hero__grid {
+  position: relative;
+  z-index: 1;
+  display: block;
+  padding-bottom: clamp(40px, 6vw, 72px);
+}
+.hero__content { max-width: 760px; }
+.hero__title { color: var(--ivory); margin-bottom: 26px; }
+.hero__title em {
+  background: linear-gradient(100deg, #9FDCFF, #E7F3FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero .eyebrow { color: rgba(251, 249, 245, 0.75); }
+.hero__tagline { color: var(--ivory); }
+.hero__tagline em {
+  background: linear-gradient(100deg, #9FDCFF, #E7F3FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero__sub { color: rgba(251, 249, 245, 0.82); }
+.hero__scroll { color: rgba(251, 249, 245, 0.7); z-index: 1; }
+.hero__scroll i { background: rgba(251, 249, 245, 0.3); }
+.hero__scroll i::after { background: var(--ivory); }
+
+.btn--ghost { border-color: rgba(251, 249, 245, 0.55); color: var(--ivory); }
+.btn--ghost::before { background: var(--ivory); }
+.btn--ghost:hover { color: var(--blue); border-color: var(--ivory); }
+
+/* 히어로 배지 — 우측 하단 */
+.hero .badge {
+  left: auto;
+  right: var(--gutter);
+  bottom: clamp(8px, 2vw, 24px);
+  width: clamp(104px, 11vw, 148px);
+  height: clamp(104px, 11vw, 148px);
+  background: rgba(251, 249, 245, 0.92);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  position: absolute;
+}
+
+/* 헤더 — 히어로 위에서는 흰색 */
+.logo { position: relative; }
+.logo__img--light {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+.logo__img--dark { opacity: 0; transition: opacity 0.4s; }
+.header.is-scrolled .logo__img--light, body.menu-open .logo__img--light { opacity: 0; }
+.header.is-scrolled .logo__img--dark, body.menu-open .logo__img--dark { opacity: 1; }
+.header:not(.is-scrolled) .nav a { color: var(--ivory); }
+.header:not(.is-scrolled) .nav a::after { background: var(--ivory); }
+.header:not(.is-scrolled) .menu-toggle { border-color: rgba(251, 249, 245, 0.45); }
+.header:not(.is-scrolled) .menu-toggle span { background: var(--ivory); }
+.header:not(.is-scrolled) .header__cta { background: var(--ivory); color: var(--blue); }
+.header:not(.is-scrolled) .header__cta::before { background: var(--blue-soft); }
+body.menu-open .header:not(.is-scrolled) .nav a,
+body.menu-open .header:not(.is-scrolled) .menu-toggle span { color: var(--ink); background: var(--ink); }
+body.menu-open .menu-toggle { border-color: var(--line); }
+
+@media (max-width: 900px) {
+  .hero .badge { width: 92px; height: 92px; right: 0; bottom: 4px; }
+  .hero__bg img { object-position: 55% 45%; }
+}
+@media (max-width: 768px) {
+  .hero .badge { display: none; }
+  .hero__content { max-width: none; }
+}
+
+/* ---------- About: 강사진 동그라미 ---------- */
+
+.about__avatars {
+  position: absolute;
+  right: -36px;
+  bottom: -46px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.about__avatar-row { display: flex; }
+.about__avatar-row img {
+  width: clamp(64px, 7.2vw, 92px);
+  height: clamp(64px, 7.2vw, 92px);
+  object-fit: cover;
+  object-position: 50% 20%;
+  border-radius: 50%;
+  border: 4px solid var(--bg);
+  background: var(--sand);
+  box-shadow: 0 12px 26px -14px rgba(0, 60, 122, 0.5);
+  transition: transform 0.5s var(--ease);
+}
+.about__avatar-row img + img { margin-left: clamp(-26px, -2.4vw, -18px); }
+.about__avatar-row:hover img { transform: translateY(-4px); }
+.about__avatar-label {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--ivory);
+  box-shadow: 0 12px 26px -16px rgba(0, 60, 122, 0.5);
+  font-size: 13px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.about__avatar-label b { color: var(--blue); font-weight: 700; }
+
+@media (max-width: 768px) {
+  .about__avatars { right: -20px; bottom: -38px; }
+  .about__avatar-label { font-size: 12px; padding: 7px 13px; }
+}
