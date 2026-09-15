@@ -2012,10 +2012,10 @@ body.menu-open .mobile-menu__nav a:nth-child(6) { transition-delay: 0.5s; }
 .program__thumb,
 .program-float img,
 .film__frame video {
-  filter: saturate(0.85) contrast(1.08) brightness(0.72);
+  filter: saturate(0.92) contrast(1.04) brightness(0.88);
   transition: filter 1s var(--ease), transform 1.2s var(--ease);
 }
-.quote-band__media img { filter: saturate(0.85) contrast(1.05) brightness(0.85); }
+.quote-band__media img { filter: saturate(0.9) contrast(1.03) brightness(0.92); }
 
 /* 어두운 블루 베일 */
 .hero__arch::before,
@@ -2027,7 +2027,7 @@ body.menu-open .mobile-menu__nav a:nth-child(6) { transition-delay: 0.5s; }
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(0, 48, 96, 0.42), rgba(16, 22, 34, 0.5));
+  background: linear-gradient(180deg, rgba(0, 48, 96, 0.2), rgba(16, 22, 34, 0.26));
   transition: opacity 0.8s var(--ease);
 }
 .hero__arch,
@@ -2036,7 +2036,7 @@ body.menu-open .mobile-menu__nav a:nth-child(6) { transition-delay: 0.5s; }
 .teacher__photo { position: relative; }
 
 /* 마우스를 올리면 살짝 밝아지며 색이 살아남 */
-.teacher:hover .teacher__photo img { filter: saturate(1) contrast(1.02) brightness(0.92); }
-.teacher:hover .teacher__photo::before { opacity: 0.45; }
-.program:hover .program__thumb { filter: saturate(1) contrast(1.02) brightness(0.9); }
-.film__frame:hover video { filter: saturate(1) contrast(1.02) brightness(0.9); }
+.teacher:hover .teacher__photo img { filter: saturate(1) contrast(1) brightness(1); }
+.teacher:hover .teacher__photo::before { opacity: 0.25; }
+.program:hover .program__thumb { filter: saturate(1) contrast(1) brightness(1); }
+.film__frame:hover video { filter: saturate(1) contrast(1) brightness(1); }
