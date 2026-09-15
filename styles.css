@@ -1427,6 +1427,7 @@ body.menu-open .mobile-menu__nav a:nth-child(6) { transition-delay: 0.5s; }
     grid-column: 1 / -1;
     grid-row: 1;
     width: 100%;
+    height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 8px;
