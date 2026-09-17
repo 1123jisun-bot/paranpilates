@@ -1,0 +1,50 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><link rel="stylesheet" href="kit.css">
+<style>
+/* 2배 해상도(340px)로 만들고 블로그에서는 170px로 표시 */
+.w{width:340px;display:none}
+.show{display:block}
+#reserve{height:300px;padding:34px 30px;color:var(--ivory);background:linear-gradient(150deg,var(--blue-deep),var(--blue) 60%,var(--blue-bright))}
+#reserve .k{font-family:var(--serif);font-style:italic;font-size:30px;line-height:1;opacity:.85}
+#reserve h2{font-size:36px;font-weight:700;letter-spacing:-.05em;line-height:1.25;margin:18px 0 26px}
+#reserve .btn{background:var(--ivory);color:var(--blue-deep);height:58px;width:100%;font-size:22px}
+#home{height:300px;background:var(--ivory);border:1px solid var(--line)}
+#home img{width:100%;height:170px;object-fit:cover;display:block}
+#home div{padding:20px 26px}
+#home .label{font-size:24px;margin-bottom:4px}
+#home h2{font-size:28px;font-weight:700;letter-spacing:-.05em}
+#home h2 span{color:var(--blue)}
+#info{height:430px;padding:32px 28px;background:var(--bg);border:1px solid var(--line)}
+#info .label{font-size:26px;margin-bottom:22px}
+#info dl{font-size:21px;letter-spacing:-.03em;line-height:1.5}
+#info dt{font-size:15px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-top:18px}
+#info dt:first-child{margin-top:0}
+#info dd{font-weight:600}
+#info dd b{color:var(--blue)}
+#info dd small{display:block;font-size:18px;font-weight:400;color:var(--muted)}
+#call{height:150px;padding:26px 28px;background:var(--ink);color:var(--ivory)}
+#call .k{font-family:var(--serif);font-style:italic;font-size:26px;color:#8ED8FF;line-height:1}
+#call p.n{font-size:34px;font-weight:700;letter-spacing:-.02em;margin-top:14px}
+</style></head><body>
+<div class="w" id="reserve">
+  <p class="k">Reservation</p>
+  <h2>체형 분석 상담,<br>지금 예약하세요</h2>
+  <span class="btn">네이버 예약 →</span>
+</div>
+<div class="w" id="home">
+  <img src="photos/about-clean.jpg" alt="">
+  <div><p class="label">Official Site</p><h2>홈페이지 <span>둘러보기 ↗</span></h2></div>
+</div>
+<div class="w" id="info">
+  <p class="label">Studio Info</p>
+  <dl>
+    <dt>Hours</dt><dd>평일 09:00 – 22:00<br>토요일 09:00 – 13:00<br><b>일요일 휴무</b></dd>
+    <dt>Location</dt><dd>서울 금천구 가산로 118, 2층<small>하모니마트 옆 건물</small></dd>
+    <dt>Contact</dt><dd>010 6694 4568<small>카톡 파란필라테스</small></dd>
+  </dl>
+</div>
+<div class="w" id="call">
+  <p class="k">Call us</p>
+  <p class="n">010.6694.4568</p>
+</div>
+<script>document.getElementById(location.hash.slice(1)||'reserve').classList.add('show')</script>
+</body></html>

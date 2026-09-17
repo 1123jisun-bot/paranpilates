@@ -1,0 +1,30 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><link rel="stylesheet" href="kit.css">
+<style>
+/* 포스팅 대표 썸네일 — 주소 뒤 #제목|카테고리|사진파일(img/ 기준), 제목 줄바꿈은 / , 강조는 *단어* */
+.canvas{width:1080px;height:1080px}
+.shade{background:linear-gradient(180deg,rgba(0,32,70,.35) 0%,rgba(0,32,70,.1) 30%,rgba(0,30,65,.92) 100%)}
+.inner{position:absolute;inset:0;padding:80px;display:flex;flex-direction:column;justify-content:flex-end;color:var(--ivory)}
+.top{position:absolute;left:80px;right:80px;top:70px;display:flex;justify-content:space-between;align-items:center;z-index:1}
+.top img{height:90px;width:auto}
+.top p{font-family:var(--serif);font-style:italic;font-size:36px;color:var(--ivory)}
+h1{font-size:78px;font-weight:700;letter-spacing:-.055em;line-height:1.22}
+h1 em{font-style:normal;color:#8ED8FF}
+.eyebrow{font-size:20px;color:rgba(251,249,245,.75);margin-top:36px}
+</style></head><body>
+<div class="canvas">
+  <img class="photo" id="ph" src="photos/private-clean.jpg" alt="">
+  <div class="shade"></div>
+  <div class="top"><img src="../../img/logo-white.webp" alt=""><p id="cat">Class Story</p></div>
+  <div class="inner">
+    <h1 id="t"></h1>
+    <p class="eyebrow">Paran Pilates Studio &nbsp;·&nbsp; 서울 금천구 가산</p>
+  </div>
+</div>
+<script>
+const [t, c, p] = decodeURIComponent(location.hash.slice(1)).split('|');
+document.getElementById('t').innerHTML = (t || '거북목, /*호흡*부터 바로잡아요')
+  .replace(/\//g, '<br>').replace(/\*(.+?)\*/g, '<em>$1</em>');
+if (c) document.getElementById('cat').textContent = c;
+if (p) document.getElementById('ph').src = p.startsWith('photos/') ? p : '../../img/' + p;
+</script>
+</body></html>

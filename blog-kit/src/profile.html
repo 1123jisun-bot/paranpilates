@@ -1,0 +1,9 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><link rel="stylesheet" href="kit.css">
+<style>
+.canvas{width:400px;height:400px;display:grid;place-items:center;background:var(--bg)}
+body.blue .canvas{background:linear-gradient(135deg,var(--blue-deep),var(--blue) 55%,var(--blue-bright))}
+.canvas img{width:230px;height:auto;margin-top:-6px}
+</style></head><body>
+<div class="canvas"><img id="l" src="../../img/logo.webp" alt=""></div>
+<script>if(location.hash==='#blue'){document.body.classList.add('blue');document.getElementById('l').src='../../img/logo-white.webp'}</script>
+</body></html>

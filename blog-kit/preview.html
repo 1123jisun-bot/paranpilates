@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>블로그 꾸미기 미리보기</title>
+<link rel="stylesheet" href="src/kit.css">
+<style>
+html, body { overflow: auto; }
+body { background: #F6F3EE; padding: 32px 16px 80px; }
+.wrap { max-width: 1180px; margin: 0 auto; }
+.tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+.tabs button { border: 1px solid var(--line); background: var(--ivory); border-radius: 999px; padding: 8px 18px; font: inherit; font-weight: 600; cursor: pointer; }
+.tabs button.on { background: var(--blue); color: var(--ivory); border-color: var(--blue); }
+.view { display: none; } .view.on { display: block; }
+h2.sec { font-size: 15px; letter-spacing: .2em; color: var(--muted); text-transform: uppercase; margin: 40px 0 14px; }
+
+/* 네이버 블로그 PC 모의 화면 */
+.nb { width: 966px; margin: 0 auto; background: #F6F3EE; box-shadow: 0 10px 40px rgba(0,0,0,.08); }
+.nb-gnb { height: 36px; background: #1C1F26; color: #fff; font-size: 12px; display: flex; align-items: center; padding: 0 16px; gap: 18px; }
+.nb-gnb b { color: #03C75A; }
+.nb-title img { display: block; width: 966px; }
+.nb-menu { height: 42px; background: #00559F; color: #fff; display: flex; align-items: center; gap: 26px; padding: 0 22px; font-size: 13px; font-weight: 600; }
+.nb-body { display: flex; gap: 22px; padding: 22px; }
+.nb-side { width: 170px; flex: none; display: flex; flex-direction: column; gap: 12px; }
+.nb-side img { width: 170px; display: block; }
+.prof { background: #fff; padding: 12px; font-size: 12px; }
+.prof img { width: 146px; margin-bottom: 8px; }
+.prof b { display: block; font-size: 13px; }
+.prof p { color: var(--muted); line-height: 1.5; margin-top: 4px; }
+.cat { background: #fff; padding: 12px 14px; font-size: 12px; line-height: 2; }
+.cat b { color: var(--blue); display: block; border-bottom: 1px solid var(--line); margin-bottom: 4px; }
+.nb-post { flex: 1; background: #fff; padding: 36px 40px; }
+.post-cat { font-size: 12px; color: var(--blue); font-weight: 600; }
+.post-title { font-size: 26px; font-weight: 700; letter-spacing: -.04em; margin: 6px 0 4px; }
+.post-meta { font-size: 12px; color: var(--muted); padding-bottom: 20px; border-bottom: 1px solid var(--line); margin-bottom: 28px; }
+.nb-post img.full { width: 100%; display: block; margin: 0 auto; }
+.nb-post p.txt { font-size: 15px; line-height: 1.9; margin: 24px 0; color: #333; }
+.nb-post p.txt em { font-style: normal; color: var(--blue); font-weight: 700; }
+.quote { border-left: 3px solid var(--blue); padding: 6px 16px; margin: 24px 0; font-size: 17px; font-weight: 600; }
+.ph { width: 100%; height: 300px; object-fit: cover; display: block; }
+
+/* 모바일 모의 */
+.phone { width: 360px; height: 720px; margin: 0 auto; border-radius: 36px; border: 10px solid #1C1F26; overflow: hidden auto; background: #fff; }
+.phone img { width: 100%; display: block; }
+.m-prof { display: flex; gap: 12px; align-items: center; padding: 16px; border-bottom: 1px solid var(--line); }
+.m-prof img { width: 56px; border-radius: 50%; }
+.m-prof b { font-size: 15px; } .m-prof p { font-size: 12px; color: var(--muted); }
+.m-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+
+/* 전체 이미지 */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+.card { background: #fff; padding: 10px; }
+.card img { width: 100%; display: block; background: #eee; }
+.card p { font-size: 12px; margin-top: 8px; color: var(--muted); word-break: break-all; }
+.scroll-x { overflow-x: auto; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="label" style="font-size:20px">Naver Blog Kit</p>
+  <h1 style="font-size:30px;letter-spacing:-.04em;margin:6px 0 20px">파란 필라테스 블로그 미리보기</h1>
+  <div class="tabs">
+    <button class="on" data-v="pc">PC 화면</button>
+    <button data-v="mo">모바일 화면</button>
+    <button data-v="all">전체 이미지</button>
+  </div>
+
+  <section class="view on" id="pc">
+    <div class="scroll-x">
+    <div class="nb">
+      <div class="nb-gnb"><b>N</b> 블로그 <span style="margin-left:auto">이웃블로그 · 내 메뉴</span></div>
+      <div class="nb-title"><img src="export/01_타이틀_사진형_966x400.png" alt=""></div>
+      <div class="nb-menu"><span>프롤로그</span><span>블로그</span><span>지도</span><span>서재</span><span>안부</span></div>
+      <div class="nb-body">
+        <aside class="nb-side">
+          <div class="prof"><img src="export/02_프로필_아이보리_400.png" alt=""><b>PARAN PILATES</b><p>1:1 개인레슨<br>1:2 듀엣레슨<br>1:6 그룹레슨<br><br>다이어트, 몸매관리, 체형교정, 재활운동, 근력향상, 혈액순환, 통증완화, 척추측만, 임산부필라테스 산전산후필라테스<br><br>▷ 소규모 그룹레슨<br>▷ 레슨 예약제 운영<br>▷ 토요일 오전 운영<br>▷ 네이버 상담예약<br><br>전화 : 010 6694 4568<br>카톡 : 파란필라테스<br><br>친절하게 상담 도와드리겠습니다.~ 편하게 연락남겨주세요^^!</p></div>
+          <img src="export/04_위젯_예약.png" alt="">
+          <div class="cat"><b>카테고리</b>공지사항<br>수업 이야기<br>변화의 기록<br>필라테스 칼럼<br>회원 후기</div>
+          <img src="export/04_위젯_운영정보.png" alt="">
+          <img src="export/04_위젯_홈페이지.png" alt="">
+          <img src="export/04_위젯_전화.png" alt="">
+        </aside>
+        <article class="nb-post">
+          <p class="post-cat">변화의 기록</p>
+          <p class="post-title">굽은 어깨, 12주 동안 이렇게 달라졌어요</p>
+          <p class="post-meta">파란 필라테스 · 2026. 9. 17.</p>
+          <img class="full" src="export/05_머리_변화의기록.png" alt="">
+          <p class="txt">안녕하세요, 파란 필라테스입니다.<br>오늘은 <em>체형 분석</em>으로 시작해 12주간 함께한 회원님의 기록을 소개해 드려요.</p>
+          <img class="full" src="export/07_구분선.png" alt="">
+          <img class="ph" src="src/photos/about-clean.jpg" alt="">
+          <div class="quote">“어깨가 펴지니 숨 쉬는 게 달라졌어요.”</div>
+          <p class="txt">본문 예시 글입니다. 사진과 글을 번갈아 배치하고, 강조할 단어는 <em>파란색</em>으로 표시해요.</p>
+          <img class="full" src="export/07_구분선.png" alt="">
+          <img class="full" src="export/06_꼬리_스튜디오안내.png" alt="">
+        </article>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="view" id="mo">
+    <div class="phone">
+      <img src="export/03_모바일커버_1080.png" alt="">
+      <div class="m-prof"><img src="export/02_프로필_블루_400.png" alt=""><div><b>PARAN PILATES</b><p>1:1 개인 · 1:2 듀엣 · 1:6 그룹레슨</p></div></div>
+      <div class="m-grid">
+        <img src="export/08_썸네일_예시.png" alt="">
+        <img src="export/08_썸네일_예시.png" alt="" style="filter:hue-rotate(-10deg)">
+      </div>
+      <img src="export/05_머리_수업이야기.png" alt="">
+      <img src="export/07_구분선.png" alt="">
+      <img src="export/06_꼬리_스튜디오안내.png" alt="">
+    </div>
+  </section>
+
+  <section class="view" id="all">
+    <div class="grid" id="grid"></div>
+  </section>
+</div>
+<script>
+const files = ["01_타이틀_사진형_966x400","01_타이틀_아이보리형_966x300","02_프로필_아이보리_400","02_프로필_블루_400","03_모바일커버_1080","04_위젯_예약","04_위젯_홈페이지","04_위젯_운영정보","04_위젯_전화","05_머리_공지사항","05_머리_수업이야기","05_머리_변화의기록","05_머리_필라테스칼럼","05_머리_회원후기","06_꼬리_스튜디오안내","07_구분선","08_썸네일_예시"];
+document.getElementById('grid').innerHTML = files.map(f => `<div class="card"><img src="export/${f}.png" alt=""><p>${f}.png</p></div>`).join('');
+document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.tabs button, .view').forEach(e => e.classList.remove('on'));
+  b.classList.add('on'); document.getElementById(b.dataset.v).classList.add('on');
+});
+const start = document.querySelector(`.tabs button[data-v="${location.hash.slice(1)}"]`);
+if (start) start.click();
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><link rel="stylesheet" href="kit.css">
+<style>
+.canvas{width:1080px;height:420px;background:var(--bg);padding:70px 80px;display:flex;flex-direction:column;justify-content:center}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px}
+.eyebrow{font-size:18px}
+.no{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--blue)}
+h1{font-family:var(--serif);font-weight:400;font-size:110px;line-height:.95;letter-spacing:-.025em}
+.ko{margin-top:26px;display:flex;align-items:center;gap:18px;font-size:34px;font-weight:700;letter-spacing:-.045em}
+.ko::before{content:"";width:48px;height:2px;background:var(--blue)}
+.logo{position:absolute;right:80px;bottom:60px;height:74px;width:auto;opacity:.9}
+</style></head><body>
+<div class="canvas">
+  <div class="top"><p class="eyebrow">Paran Pilates Journal</p><p class="no" id="no"></p></div>
+  <h1 id="en"></h1>
+  <p class="ko" id="ko"></p>
+  <img class="logo" src="../../img/logo.webp" alt="">
+</div>
+<script>
+const C = {
+  notice:  ['01', 'Studio <em class="grad">Notice</em>', '공지사항'],
+  class:   ['02', 'Class <em class="grad">Story</em>', '수업 이야기'],
+  records: ['03', 'Body <em class="grad">Records</em>', '변화의 기록'],
+  column:  ['04', 'Pilates <em class="grad">Column</em>', '필라테스 칼럼'],
+  review:  ['05', 'Member <em class="grad">Voice</em>', '회원 후기'],
+};
+const c = C[location.hash.slice(1)] || C.notice;
+document.getElementById('no').textContent = 'No. ' + c[0];
+document.getElementById('en').innerHTML = c[1];
+document.getElementById('ko').textContent = c[2];
+</script>
+</body></html>
